@@ -6,7 +6,13 @@ public class GameController : MonoBehaviour
 {
 
     static public GameController Instance;
+
+    public GameObject scoreText, gameOverText;
     public ObjectPool objectPool;
+
+    public int score = 0;
+    public bool gameOver = false;
+
     // Use this for initialization
 
     void Awake()
@@ -20,5 +26,16 @@ public class GameController : MonoBehaviour
     void Start()
     {
         objectPool = ObjectPool.Instance;
+    }
+
+    public void addPoint()
+    {
+       score++;
+       scoreText.GetComponent<Text>().text = "Score: " + score;
+    }
+    public void triggerGameOver()
+    {
+        gameOver = true;
+        gameOverText.SetActive(true);
     }
 }
