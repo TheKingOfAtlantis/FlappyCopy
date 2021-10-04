@@ -42,5 +42,6 @@ public class Bird : MonoBehaviour
         // Kill the bird :(
         animator.SetTrigger("Die");
         isDead = true;
+        GameController.Instance.triggerGameOver();
     }
 }
