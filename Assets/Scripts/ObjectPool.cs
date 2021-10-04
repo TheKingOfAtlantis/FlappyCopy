@@ -19,8 +19,7 @@ public class ObjectPool : MonoBehaviour
     public static ObjectPool Instance;
     
     public List<ObjectPoolItem> poolItems; // The template used to instantiate new game objects
-    public List<GameObject> pool;      // The pool which contains the game objects
-
+    public List<GameObject> pool;          // The pool which contains the game objects
 
     private void Awake() => Instance = this;
 

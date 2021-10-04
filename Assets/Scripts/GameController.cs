@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 
     static public GameController Instance;
 
-    public GameObject scoreText, gameOverText;
+    public GameObject scoreText, gameOverText, startIndicatorText;
     public ObjectPool objectPool;
 
     public int score = 0;
@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        objectPool = ObjectPool.Instance;
+
     }
 
     public void addPoint()
@@ -39,5 +39,13 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         gameOverText.SetActive(true);
+        startIndicatorText.SetActive(true);
+    }
+    public void startGame()
+    {
+        gameOver = false;
+        objectPool.restPool();
+        startIndicatorText.SetActive(false);
+        gameOverText.SetActive(false);
     }
 }

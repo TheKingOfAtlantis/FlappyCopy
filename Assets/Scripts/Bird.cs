@@ -16,13 +16,30 @@ public class Bird : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator  = GetComponent<Animator>();
+
+        rigidBody.gravityScale = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Animate the bird as long as it's not dead
-        if (isDead == false)
+
+        if(GameController.Instance.gameOver)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                rigidBody.gravityScale = 1f;
+                GameController.Instance.startGame();
+                if(isDead)
+                {
+                    transform.position = Vector3.left * 2;
+                    transform.rotation = Quaternion.identity;
+                    isDead = false;
+                    animator.SetTrigger("Start");
+                }
+            }
+        } 
+        else if (isDead == false) // Animate the bird as long as it's not dead
         {
             // If we are given an input
             if (Input.GetMouseButton(0) || Input.GetKeyDown("space"))
