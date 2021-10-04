@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
 
     static public GameController Instance;
+    public ObjectPool objectPool;
     // Use this for initialization
 
     void Awake()
@@ -18,5 +19,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        objectPool = ObjectPool.Instance;
     }
 }
